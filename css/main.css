@@ -1,0 +1,97 @@
+/* clear defaults */
+html, body {
+  margin: 0px;
+  padding: 0px; }
+
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0px;
+  padding: 0px; }
+
+/* general */
+body * {
+  font-family: "Saira Semi Condensed";
+  font-weight: 400; }
+
+a {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: underline; }
+
+/* header */
+.header {
+  background-color: #E5E9FF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); }
+  .header h1 {
+    font-size: 3em;
+    padding: 20px 0 0 0;
+    font-weight: 900;
+    text-align: center; }
+  .header p {
+    padding: 0 5% 10px 5%;
+    font-size: 1.5em;
+    font-style: italic;
+    text-align: center; }
+  .header .navwrapper {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    overflow: hidden; }
+    .header .navwrapper .navlist {
+      font-size: 1.5em;
+      margin: 0px auto;
+      overflow: hidden;
+      width: 80%; }
+      .header .navwrapper .navlist .navlistitem {
+        float: left;
+        padding: 5px 10px; }
+
+/* index main */
+.main {
+  overflow: hidden; }
+  .main .projectrow {
+    margin: 20px auto 0px auto;
+    overflow: hidden;
+    width: 90%; }
+    .main .projectrow .projectbox {
+      float: left;
+      overflow: hidden;
+      padding: 20px;
+      width: 50%; }
+      .main .projectrow .projectbox h3 {
+        float: left;
+        font-size: 1.3em;
+        text-align: center; }
+      .main .projectrow .projectbox img {
+        margin: auto;
+        width: 100%; }
+
+/* about main */
+#mephoto {
+  float: left;
+  margin: 5%;
+  width: 50%; }
+
+.about p {
+  margin: 5%; }
+
+/* footer */
+.footer {
+  background-color: #4c4c4c;
+  position: relative; }
+  .footer .footerwrapper {
+    overflow: hidden; }
+    .footer .footerwrapper .footerlist {
+      font-size: 1.1em;
+      margin: 0px auto;
+      overflow: hidden;
+      width: 70%; }
+      .footer .footerwrapper .footerlist .footeritem {
+        float: left;
+        padding: 5px 10px; }
+        .footer .footerwrapper .footerlist .footeritem a {
+          color: white; }
+
+/*# sourceMappingURL=main.css.map */
