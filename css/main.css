@@ -62,7 +62,7 @@ a:hover {
       width: 50%; }
       .main .projectrow .projectbox h3 {
         float: left;
-        font-size: 1.3em;
+        font-size: 1.5em;
         text-align: center; }
       .main .projectrow .projectbox img {
         margin: auto;
@@ -76,6 +76,18 @@ a:hover {
 
 .about p {
   margin: 5%; }
+
+/* useful page */
+.useful {
+  margin: 2% 10% 6% 10%; }
+  .useful .resourceitem {
+    margin: 20px; }
+    .useful .resourceitem h3 {
+      font-size: 1.5em;
+      margin-bottom: 5px; }
+    .useful .resourceitem ul li {
+      list-style-type: none;
+      margin: 8px 0px 0px 10px; }
 
 /* footer */
 .footer {

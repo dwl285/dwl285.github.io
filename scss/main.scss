@@ -81,7 +81,7 @@ a:hover {
 
       h3 {
         float: left;
-        font-size: 1.3em;
+        font-size: 1.5em;
         text-align: center;
       }
 
@@ -105,6 +105,26 @@ a:hover {
 .about {
   p {
   margin: 5%;
+  }
+}
+
+/* useful page */
+.useful {
+  margin: 2% 10% 6% 10%;
+
+  .resourceitem {
+    margin: 20px;
+
+    h3 {
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+    ul {
+      li {
+        list-style-type: none;
+        margin: 8px 0px 0px 10px;
+      }
+    }
   }
 }
 
