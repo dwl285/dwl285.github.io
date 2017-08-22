@@ -80,59 +80,54 @@ a:hover {
 .main {
   overflow: hidden;
 
-  .projectrow {
-      margin: 20px auto 0px auto;
-      overflow: hidden;
-      width: 90%;
-
-    .projectbox {
-      float: left;
-      overflow: hidden;
-      padding: 20px;
-      width: 50%;
-
-      h3 {
-        float: left;
-        font-size: 1.5em;
-        text-align: center;
-      }
-
-      img {
-        border-radius: 6px;
-        margin: auto;
-        width: 100%;
-      }
-    }
-  }
 }
 
-/* index main */
+/* projects main */
 .projects {
+  margin: 20px;
   overflow: hidden;
 
   .projectrow {
-      margin: 20px auto 0px auto;
+      height: 100%;
+      margin: 0px auto 0px auto;
       overflow: hidden;
       width: 90%;
 
     .projectbox {
+      border-radius: 25px;
       float: left;
+      height: 200px;
+      margin: 2%;
       overflow: hidden;
-      padding: 20px;
-      width: 33.3333333%;
+      position: relative;
+      width: 29.3333333%;
 
       h3 {
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 1px;
         float: left;
         font-size: 1.5em;
+        padding: 1%;
+        position: absolute; 
         text-align: center;
+        top: 4%;
+        left: 4%;
+        z-index: 1;
+        position: absolute; 
       }
 
       img {
+        height: 100%;
         border-radius: 25px;
         margin: auto;
         width: 100%;
       }
     }
+
+    .projectbox.one {
+        background: url(../img/project1.jpg) no-repeat center center;
+        background-size: cover;
+      }
   }
 }
 

@@ -56,44 +56,44 @@ a:hover {
 /* index main */
 .main {
   overflow: hidden; }
-  .main .projectrow {
-    margin: 20px auto 0px auto;
-    overflow: hidden;
-    width: 90%; }
-    .main .projectrow .projectbox {
-      float: left;
-      overflow: hidden;
-      padding: 20px;
-      width: 50%; }
-      .main .projectrow .projectbox h3 {
-        float: left;
-        font-size: 1.5em;
-        text-align: center; }
-      .main .projectrow .projectbox img {
-        border-radius: 6px;
-        margin: auto;
-        width: 100%; }
 
-/* index main */
+/* projects main */
 .projects {
+  margin: 20px;
   overflow: hidden; }
   .projects .projectrow {
-    margin: 20px auto 0px auto;
+    height: 100%;
+    margin: 0px auto 0px auto;
     overflow: hidden;
     width: 90%; }
     .projects .projectrow .projectbox {
+      border-radius: 25px;
       float: left;
+      height: 200px;
+      margin: 2%;
       overflow: hidden;
-      padding: 20px;
-      width: 33.3333333%; }
+      position: relative;
+      width: 29.3333333%; }
       .projects .projectrow .projectbox h3 {
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 1px;
         float: left;
         font-size: 1.5em;
-        text-align: center; }
+        padding: 1%;
+        position: absolute;
+        text-align: center;
+        top: 4%;
+        left: 4%;
+        z-index: 1;
+        position: absolute; }
       .projects .projectrow .projectbox img {
+        height: 100%;
         border-radius: 25px;
         margin: auto;
         width: 100%; }
+    .projects .projectrow .projectbox.one {
+      background: url(../img/project1.jpg) no-repeat center center;
+      background-size: cover; }
 
 /* about main */
 #mephoto {

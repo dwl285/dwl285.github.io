@@ -37,7 +37,7 @@
         <h3>Git workflow</h3>
         <p><a href="http://rogerdudler.github.io/git-guide/">Git: The Simple Guide</a> - Does a good
         job of summarising the most important aspects</p>
-        <p>Here is my even more simple description of the steps required:
+        <p>Here is my even more simple description of the steps required:</p>
         <ul>
           <li>step 1: git clone https://github.com/dwl285/portfolio-site</li>
           <li>step 2: make changes</li>
@@ -47,6 +47,15 @@
           <li>step 6: git commit -m "describe the change"</li>
           <li>step 7: git push origin master</li>
           <li>step 8: check github to see if your files are there</li>
+        </ul>
+        <p>And here's a list of steps to push one repository into another:</p>
+        <ul>
+          <li>step 1: cd $HOME</li>
+          <li>step 2: git clone --bare https://git.com/repo-to-move-into-a-new-repo</li>
+          <li>step 3: cd my_repo.git</li>
+          <li>step 4: git push --mirror https://github.com/new-repo</li>
+          <li>step 5: cd ..</li>
+          <li>step 6: rm -rf my_repo.git</li>
         </ul>
       </div>
     </div>
