@@ -92,7 +92,11 @@ a:hover {
       margin: 0px auto 0px auto;
       overflow: hidden;
       width: 90%;
-
+    
+    .projecthover {
+      border: 10px solid red;
+    }
+    
     .projectbox {
       border-radius: 25px;
       float: left;
@@ -123,11 +127,6 @@ a:hover {
         width: 100%;
       }
     }
-
-    .projectbox.one {
-        background: url(../img/project1.jpg) no-repeat center center;
-        background-size: cover;
-      }
   }
 }
 

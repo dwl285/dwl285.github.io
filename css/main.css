@@ -66,6 +66,8 @@ a:hover {
     margin: 0px auto 0px auto;
     overflow: hidden;
     width: 90%; }
+    .projects .projectrow .projecthover {
+      border: 10px solid red; }
     .projects .projectrow .projectbox {
       border-radius: 25px;
       float: left;
@@ -91,9 +93,6 @@ a:hover {
         border-radius: 25px;
         margin: auto;
         width: 100%; }
-    .projects .projectrow .projectbox.one {
-      background: url(../img/project1.jpg) no-repeat center center;
-      background-size: cover; }
 
 /* about main */
 #mephoto {
