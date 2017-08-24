@@ -27,9 +27,13 @@ body * {
 	font-weight: 400;
 }
 
-a * {
+* a {
   text-decoration: none;
   color: inherit;
+}
+
+* li {
+  list-style-type: none;
 }
 
 a:hover {
@@ -94,6 +98,35 @@ a:hover {
     color: $projects-color-1;
   }
 
+  .projectselector {
+    font-size: 1.5em;
+    margin: 0px auto;
+    overflow: hidden;
+    width: 60%;
+
+    li {
+      float: left;
+      margin:0 10px;
+      padding:5px 10px;
+
+      a {
+        color: $header-text-colour2;
+        padding:5px 20px;
+      }
+      a:hover {
+        text-decoration: none;
+      }
+    }
+    li:hover {
+      border: 2px solid $header-text-colour2;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    li.active {
+      border: 2px solid $header-text-colour2;
+      border-radius: 5px;    }
+  }
   .projectbox {
     border-radius: 25px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -105,6 +138,7 @@ a:hover {
     position: relative;
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     width: 29.3333333%;
+    display: none;
 
     h3 {
       background: rgba(255, 255, 255, 0.7);
@@ -137,6 +171,9 @@ a:hover {
       margin: auto;
       width: 100%;
     }
+  }
+  .projectbox.selected {
+    display: inline-block;
   }
     .projecthover {
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -171,7 +208,6 @@ a:hover {
     }
     ul {
       li {
-        list-style-type: none;
         margin: 8px 0px 0px 10px;
       }
     }
