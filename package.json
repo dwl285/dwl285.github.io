@@ -1,0 +1,13 @@
+{
+  "name": "dan-projects-homepage",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "preview": "python3 -m http.server 4173 --bind 0.0.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@axe-core/playwright": "4.11.1"
+  }
+}
