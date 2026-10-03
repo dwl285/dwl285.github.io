@@ -13,6 +13,11 @@ test('has honest project content and the two working destinations', async ({ pag
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.getByRole('main')).toHaveCount(1);
   await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Daniel Lee');
+  await expect(page.locator('.intro-copy')).toHaveCount(0);
+  const visibleText = (await page.locator('body').innerText()).replace(/\s+/g, ' ');
+  expect(visibleText).not.toContain(['A small home for', 'personal projects.'].join(' '));
+  expect(visibleText).not.toContain(['Two projects, one place', 'to find them.'].join(' '));
   await expect(page.locator('.project-card')).toHaveCount(2);
   for (const [name, href] of projects) {
     const link = page.getByRole('link', { name, exact: true });
