@@ -4,7 +4,7 @@ import { stat } from 'node:fs/promises';
 
 const projects = [
   ['Open Dot', 'https://dot.dandotlee.com'],
-  ['Open Writer', 'https://writer-dwl285.fly.dev/'],
+  ['Open Writer', 'https://writer.dandotlee.com'],
 ];
 
 test('has honest project content and the two working destinations', async ({ page }) => {
