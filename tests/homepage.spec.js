@@ -5,9 +5,10 @@ import { stat } from 'node:fs/promises';
 const projects = [
   ['Open Dot', 'https://dot.dandotlee.com'],
   ['Open Writer', 'https://writer.dandotlee.com'],
+  ['Marlow', 'https://agentshopper.uk'],
 ];
 
-test('has honest project content and the two working destinations', async ({ page }) => {
+test('has honest project content and the three working destinations', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle('Daniel Lee — Personal projects');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
@@ -24,7 +25,7 @@ test('has honest project content and the two working destinations', async ({ pag
     await expect(link).toHaveAttribute('href', href);
     await expect(link).not.toHaveAttribute('target', '_blank');
   }
-  await expect(page.locator('a[href^="https:"]')).toHaveCount(2);
+  await expect(page.locator('a[href^="https:"]')).toHaveCount(3);
   await expect(page.getByText('Project access may require sign-in.')).toHaveCount(0);
   await expect(page.getByRole('region', { name: 'Projects', exact: true })).toHaveCount(1);
   await expect(page.getByRole('heading', { level: 2 })).toHaveCount(2);
