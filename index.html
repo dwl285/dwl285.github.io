@@ -1,47 +1,47 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <title>Daniel Lee - Web Developer</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:400,900" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Daniel Lee's personal projects: Dot, a personal assistant, and Writer, a private place to write.">
+    <meta name="theme-color" content="#f7f6f2">
+    <meta property="og:title" content="Daniel Lee — Personal projects">
+    <meta property="og:description" content="A small home for Dot and Writer.">
+    <meta property="og:type" content="website">
+    <title>Daniel Lee — Personal projects</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/home.css">
   </head>
-
   <body>
+    <a class="skip-link" href="#projects">Skip to projects</a>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="identity"><span class="monogram" aria-hidden="true">dl<span>.</span></span><h1>Daniel Lee</h1></div>
+        <span class="site-address">dandotlee.com</span>
+      </header>
 
-    <div class="header">
-      <h1>Daniel Lee // Web Developer</h1>
-      
-      <p>Paragraph to go here, something that's a nice one line 
-      introduction</p>
-      <div class="navwrapper">
-        <div class="navlist">
-          <div class="navlistitem"><a href="index.html">Home</a></div>
-          <div class="navlistitem"><a href="pages/projects.html">Projects</a></div>
-          <div class="navlistitem"><a href="pages/about.html">About Me</a></div>
-          <div class="navlistitem"><a href="pages/useful.html">Useful Resources</a></div>
-        </div>
-      </div>
+      <main>
+        <section id="projects" class="projects" aria-label="Projects" tabindex="-1">
+          <div class="project-grid">
+            <article class="project-card dot-card" aria-labelledby="dot-title">
+              <div class="card-top"><span class="project-symbol dot-symbol" aria-hidden="true"><i></i></span><span class="project-number" aria-hidden="true">01</span></div>
+              <p class="eyebrow project-category">Personal assistant</p>
+              <h2 id="dot-title" class="dot-title">Dot<span aria-hidden="true">.</span></h2>
+              <p class="project-description">One ongoing conversation with a personal assistant.</p>
+              <a class="project-link" href="https://dot.dandotlee.com"><span>Open Dot</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+            <article class="project-card writer-card" aria-labelledby="writer-title">
+              <div class="card-top"><span class="project-symbol writer-symbol" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false"><rect width="32" height="32" rx="7" fill="#1f1d1a"/><path d="M9 22.5 20.5 11a2.1 2.1 0 0 1 3 3L12 25.5H9z" fill="#faf9f6"/></svg></span><span class="project-number" aria-hidden="true">02</span></div>
+              <p class="eyebrow project-category">Writing space</p>
+              <h2 id="writer-title" class="writer-title">Writer</h2>
+              <p class="project-description">A private place to write, practise, and review drafts.</p>
+              <!-- Keep the working Fly URL until the custom domain, TLS, and sign-in are verified. -->
+              <a class="project-link" href="https://writer-dwl285.fly.dev/"><span>Open Writer</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </article>
+          </div>
+        </section>
+      </main>
+
     </div>
-
-    <div class="index main">
-    <img src="img/home-bg.jpg">
-    </div>
-
-    <div class="footer">
-      <div class="footerwrapper">
-        <div class="footerlist">
-          <div class="footeritem"><a href="mailto:dwl285@gmail.com" target="_blank">Email me: dwl285@gmail.com</a></div>
-          <div class="footeritem"><a href="https://www.linkedin.com/in/dwl285/" target="_blank">LinkedIn</a></div>
-          <div class="footeritem"><a href="https://twitter.com/dwl285" target="_blank">Twitter</a></div>
-          <div class="footeritem"><a href="https://github.com/dwl285" target="_blank">github</a></div>
-          <div class="footeritem"><a href="https://www.facebook.com/profile.php?id=36909077" target="_blank">Facebook</a></div>
-        </div>
-      </div>
-    </div>
-
-</body>
-<!-- Script import -->
-<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+  </body>
 </html>
