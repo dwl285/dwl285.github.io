@@ -25,7 +25,9 @@ test('has honest project content and the two working destinations', async ({ pag
     await expect(link).not.toHaveAttribute('target', '_blank');
   }
   await expect(page.locator('a[href^="https:"]')).toHaveCount(2);
-  await expect(page.getByText('Project access may require sign-in.')).toBeVisible();
+  await expect(page.getByText('Project access may require sign-in.')).toHaveCount(0);
+  await expect(page.getByRole('region', { name: 'Projects', exact: true })).toHaveCount(1);
+  await expect(page.getByRole('heading', { level: 2 })).toHaveCount(2);
 });
 
 for (const width of [320, 390, 640, 768, 1440]) {

@@ -37,5 +37,7 @@ and axe accessibility scans at 320, 390, 640, 768, and 1440 px, and 200% text
 resizing with forced colors and reduced motion. Automated scans are not a complete
 accessibility certification; manual keyboard and visual review are still needed.
 
-There is no build step. GitHub Pages can serve the root directly after an
-explicitly approved merge. See [the staged domain plan](docs/domain-plan.md).
+There is no build step. Production hosting is Vercel, in the dedicated
+`dan-personal-homepage` project, not GitHub Pages. Publish only the three homepage
+assets; keep development checks and legacy files out of the deployment.
+See [the domain plan](docs/domain-plan.md).

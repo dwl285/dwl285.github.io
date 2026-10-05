@@ -1,73 +1,36 @@
-# Staged domain plan
+# Homepage production and domain plan
 
-This repository contains source, not a deployment. No custom-domain configuration,
-`CNAME` file, deployment workflow or DNS mutation is included in the homepage PR.
-Merging into the existing Pages publishing branch may publish the replacement
-homepage, so merge only when that publication is approved.
+Daniel authorized merging and publishing the minimal header and two-card
+homepage on Vercel. GitHub is the source repository, not the chosen host.
+Do not add a GitHub Pages CNAME or Pages DNS records.
 
-## Minimal hosting: existing GitHub Pages user site
+## Dedicated Vercel homepage project
 
-This is a static site; no new app server, framework, paid plan, or repository is
-required. Inspect the actual Pages settings and intended publishing source
-(`master`, repository root) before proceeding.
+Use the dedicated `dan-personal-homepage` project. Do not modify Dot's proxy
+or other applications. Deploy only the exact reviewed `index.html`,
+`css/home.css`, and `assets/favicon.svg` from the merged source.
+No build, JavaScript runtime, remote fonts, or paid plan is needed.
 
-After domain ownership and publication are approved:
+1. Read project, deployment, domain, and current DNS state before changes.
+2. Attach `dandotlee.com` and, if allowed by the integration grant, `www.dandotlee.com`.
+3. Use only exact routing and ownership-verification records returned by Vercel.
+   Do not guess IPs or CNAME targets.
+4. The current task authorizes DNS writes only at apex/www. If Vercel requires
+   a verification TXT at another hostname, report that separate authorization
+   is needed. A scoped-tool refusal is a blocker, not permission to bypass it.
+5. Replace only relevant apex/www web record groups using exact previously
+   observed records for compare-and-set. Preserve mail, Dot, Writer, verification,
+   nameservers, and every unrelated record. Never purchase or change nameservers.
+6. Wait for readiness and TLS; verify the actual HTTPS page and both project links
+   in the native browser. A GitHub merge alone is not a deployment.
 
-1. Export the complete DNS zone. Preserve Dot, nameservers, verification records,
-   mail records (MX, SPF, DKIM, DMARC), and all unrelated names.
-2. Verify `dandotlee.com` in **account Settings → Pages** with GitHub's generated
-   `_github-pages-challenge-dwl285` TXT record. Keep that record after verification.
-3. Configure `dandotlee.com` in **repository Settings → Pages → Custom domain**
-   before pointing DNS at Pages. Branch publishing creates a root `CNAME` file.
-4. Replace only conflicting apex **web A** records with these Pages values:
+## Writer and Dot links
 
-   | DNS host | Type | Value |
-   |---|---|---|
-   | `@` | A | `185.199.108.153` |
-   | `@` | A | `185.199.109.153` |
-   | `@` | A | `185.199.110.153` |
-   | `@` | A | `185.199.111.153` |
-   | `www` | CNAME | `dwl285.github.io` |
+The homepage links to `https://dot.dandotlee.com` and the working
+`https://writer-dwl285.fly.dev/` address. Writer's custom-domain work is owned
+by another worker. Do not modify Writer DNS, deploy Writer, or switch the homepage
+link until its custom hostname, TLS, sign-in, and existing note access are verified.
 
-   IPv6 is optional; use GitHub's documented AAAA records if required. Do not
-   create an apex CNAME, wildcard record, or change nameservers.
-5. Wait for GitHub's DNS and certificate checks, enable **Enforce HTTPS**, then
-   verify apex/www behavior, both project links, and unchanged Dot access.
-
-[Official custom-domain instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
-· [Official ownership verification](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages)
-
-## Writer custom hostname: later, separately
-
-The homepage must keep `https://writer-dwl285.fly.dev/` until the new hostname is
-verified. An authorised operator should inspect the existing Fly app's IPs and
-certificate list first, then attach `writer.dandotlee.com` if needed. Use the exact
-DNS values returned by Fly, not a guessed CNAME target. No new Writer app or
-source deployment is needed solely to attach a hostname.
-
-```sh
-fly ips list -a writer-dwl285
-fly certs list -a writer-dwl285
-# Only after explicit hosting-change approval, if the hostname is not attached:
-fly certs add writer.dandotlee.com -a writer-dwl285
-fly certs setup writer.dandotlee.com -a writer-dwl285
-# After the selected DNS records propagate:
-fly certs check writer.dandotlee.com -a writer-dwl285
-```
-
-A+AAAA is Fly's recommended direct routing option. For a subdomain CNAME, copy
-Fly's unique target from setup output. IPv6, a DNS challenge CNAME, or an ownership
-TXT can provide validation; challenge/ownership values must come from Fly.
-
-Confirm the app's allowed origins and the existing Google OAuth client's
-Authorized JavaScript origins include the new HTTPS origin while retaining the
-working origin. Verify TLS, health, Google sign-in and existing note access on
-both hosts, without editing/deleting notes. A new hostname can require a fresh
-sign-in. Update the Writer link only in a subsequent reviewed change.
-
-[Official Fly custom-domain guide](https://docs.fly.io/networking/custom-domain)
-· [Official Google Identity Services setup](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid)
-
-Record current settings privately before any later change. Roll back only the
-individual web records/settings changed; preserve data, existing origins, mail
-records and unrelated DNS. Never put credentials or secret values in this repo.
+Record deployment ID, exact source SHA, domain/TLS state, and changed DNS groups
+privately. Roll back only individual web groups changed, not the whole zone.
+Never put credentials or secret values in this repository.
