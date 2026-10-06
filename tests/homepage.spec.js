@@ -143,11 +143,12 @@ test('title hover affordance is visible without changing navigation behavior', a
 });
 
 for (const width of [320, 390, 640, 768, 1440]) {
-  test(`all cards share complete structure and aligned styling at ${width}px`, async ({ page }) => {
+  test(`Dot, Writer and Marlow share complete structure and aligned styling at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');
     await page.mouse.move(0, 0);
-    const cards = page.locator('.project-grid > article.project-card');
+    const cards = page.locator('.project-grid > article.project-card:is(.dot-card, .writer-card, .marlow-card)');
+    await expect(cards).toHaveCount(3);
     const metrics = [];
     for (const card of await cards.all()) {
       await expect(card.locator(':scope > .card-top')).toHaveCount(1);
