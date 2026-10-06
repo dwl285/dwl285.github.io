@@ -51,7 +51,8 @@ test('Dot, Writer and Marlow are sibling project cards with independent links', 
   await expect(cards.nth(2).getByRole('heading', { name: 'Marlow', exact: true })).toHaveAttribute('id', 'marlow-title');
   await expect(cards.nth(1).locator('a[href="https://agentshopper.uk"]')).toHaveCount(0);
   await expect(page.locator('article').filter({ has: marlowLink })).toHaveCount(1);
-  await expect(cards.nth(2).locator('.project-category, .project-description')).toHaveCount(0);
+  await expect(cards.nth(2).locator('.project-category')).toHaveText('Personal shopper');
+  await expect(cards.nth(2).locator('.project-description')).toHaveText('A personal shopper whose incentives are yours.');
 });
 
 for (const width of [320, 390, 640, 768, 1440]) {
@@ -140,3 +141,46 @@ test('title hover affordance is visible without changing navigation behavior', a
     await expect(link).not.toHaveAttribute('target');
   }
 });
+
+for (const width of [320, 390, 640, 768, 1440]) {
+  test(`all cards share complete structure and aligned styling at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    await page.mouse.move(0, 0);
+    const cards = page.locator('.project-grid > article.project-card');
+    const metrics = [];
+    for (const card of await cards.all()) {
+      await expect(card.locator(':scope > .card-top')).toHaveCount(1);
+      await expect(card.locator('.project-symbol > svg, .project-symbol > i')).toHaveCount(1);
+      await expect(card.locator('.project-category')).toHaveCount(1);
+      await expect(card.locator('.project-category')).not.toBeEmpty();
+      await expect(card.locator('h2 > a.project-title-link')).toHaveCount(1);
+      await expect(card.locator('.project-description')).toHaveCount(1);
+      await expect(card.locator('.project-description')).not.toBeEmpty();
+      await expect(card.locator('.project-title-link')).toHaveCSS('text-decoration-line', 'none');
+      metrics.push(await card.evaluate((el) => {
+        const style = getComputedStyle(el), box = el.getBoundingClientRect();
+        const relativeTop = (selector) => el.querySelector(selector).getBoundingClientRect().top - box.top;
+        const symbol = el.querySelector('.project-symbol').getBoundingClientRect();
+        return { width: box.width, height: box.height, padding: style.padding, radius: style.borderRadius,
+          background: style.backgroundColor, icon: [symbol.width, symbol.height],
+          positions: ['.card-top', '.project-category', 'h2', '.project-description'].map(relativeTop) };
+      }));
+    }
+    for (const metric of metrics) {
+      expect(metric.width).toBeCloseTo(metrics[0].width, 1);
+      expect(metric.height).toBeCloseTo(metrics[0].height, 1);
+      expect(metric.padding).toEqual(metrics[0].padding);
+      expect(metric.radius).toEqual(metrics[0].radius);
+      expect(metric.icon).toEqual([42, 42]);
+      expect(metric.positions).toEqual(metrics[0].positions);
+      expect(metric.background).not.toBe('rgb(255, 255, 255)');
+      expect(metric.background).not.toBe('rgb(251, 252, 248)');
+    }
+    const dot = page.locator('.dot-title'), writer = page.locator('.writer-title');
+    await expect(dot).toHaveCSS('font-style', 'normal');
+    await expect(writer).toHaveCSS('font-style', 'italic');
+    expect(await dot.evaluate(el => getComputedStyle(el).fontFamily)).not.toEqual(await writer.evaluate(el => getComputedStyle(el).fontFamily));
+    await expect(page.locator('.marlow-symbol svg text')).toHaveText('M');
+  });
+}
