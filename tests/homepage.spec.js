@@ -3,12 +3,12 @@ import AxeBuilder from '@axe-core/playwright';
 import { stat } from 'node:fs/promises';
 
 const projects = [
-  ['Open Dot', 'https://dot.dandotlee.com'],
-  ['Open Writer', 'https://writer.dandotlee.com'],
-  ['Open Marlow', 'https://agentshopper.uk'],
+  ['Dot', 'https://dot.dandotlee.com'],
+  ['Writer', 'https://writer.dandotlee.com'],
+  ['Marlow', 'https://agentshopper.uk'],
 ];
 
-test('has honest project content and the three working destinations', async ({ page }) => {
+test('has unchanged project content and title links to the three working destinations', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle('Daniel Lee — Personal projects');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
@@ -23,9 +23,13 @@ test('has honest project content and the three working destinations', async ({ p
   for (const [name, href] of projects) {
     const link = page.getByRole('link', { name, exact: true });
     await expect(link).toHaveAttribute('href', href);
+    await expect(page.getByRole('heading', { level: 2, name, exact: true }).getByRole('link', { name, exact: true })).toHaveAttribute('href', href);
     await expect(link).not.toHaveAttribute('target', '_blank');
   }
   await expect(page.locator('a[href^="https:"]')).toHaveCount(3);
+  await expect(page.getByRole('link', { name: /^Open / })).toHaveCount(0);
+  await expect(page.locator('.project-link, .project-title-link svg')).toHaveCount(0);
+  await expect(page.locator('.project-title-link')).toHaveCount(3);
   await expect(page.getByText('Project access may require sign-in.')).toHaveCount(0);
   await expect(page.getByRole('region', { name: 'Projects', exact: true })).toHaveCount(1);
   await expect(page.getByRole('heading', { level: 2 })).toHaveCount(3);
@@ -58,6 +62,7 @@ for (const width of [320, 390, 640, 768, 1440]) {
     for (const [name] of projects) {
       const box = await page.getByRole('link', { name, exact: true }).boundingBox();
       expect(box.height).toBeGreaterThanOrEqual(44);
+      expect(box.width).toBeGreaterThanOrEqual(44);
       expect(box.x).toBeGreaterThanOrEqual(0);
       expect(box.x + box.width).toBeLessThanOrEqual(width);
     }
@@ -81,6 +86,7 @@ test('keyboard skip link, project order, focus indication and activation work', 
     await expect(link).toBeFocused();
     const outline = await link.evaluate((element) => getComputedStyle(element).outlineStyle);
     expect(outline).toBe('solid');
+    expect(await link.evaluate((element) => getComputedStyle(element).textDecorationLine)).toContain('underline');
     // Prove the destination with a local intercepted response, not live app state.
     await page.route(href, (route) => route.fulfill({ body: name }));
     await page.keyboard.press('Enter');
@@ -122,4 +128,15 @@ test('remains readable with 200% text sizing, forced colors, and reduced motion'
   });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   for (const [name] of projects) await expect(page.getByRole('link', { name, exact: true })).toBeVisible();
+});
+
+test('title hover affordance is visible without changing navigation behavior', async ({ page }) => {
+  await page.goto('/');
+  for (const [name] of projects) {
+    const link = page.getByRole('link', { name, exact: true });
+    await link.hover();
+    expect(await link.evaluate((element) => getComputedStyle(element).textDecorationLine)).toContain('underline');
+    await expect(link).not.toHaveAttribute('onclick');
+    await expect(link).not.toHaveAttribute('target');
+  }
 });
