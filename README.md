@@ -1,7 +1,7 @@
 # Daniel's project homepage
 
 A static, responsive homepage for **dandotlee.com**, in the existing user-site
-repository. Links to Dot and Writer; does not change either application.
+repository. Links to Dot, Writer, Marlow, and Practice Card; does not change those applications.
 
 ## Design and scope
 
