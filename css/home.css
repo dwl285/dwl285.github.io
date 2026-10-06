@@ -31,21 +31,23 @@ a:focus-visible, [tabindex="-1"]:focus-visible { outline: 3px solid var(--green)
 .site-address { font-size: 12px; color: var(--muted); }
 p { margin: 0; }
 .eyebrow { display: flex; align-items: center; gap: 12px; font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.6; }
-.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 24px; }
 .project-card { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--line); border-radius: 14px; padding: 32px; background: #fbfcf8; }
 .dot-card { background: #eff2e9; }
 .writer-card { background: #f5f0e5; border-color: #e0d7c6; }
+.marlow-card { background: #eef1eb; border-color: #d4ddd0; }
 .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 33px; }
 .project-symbol { width: 42px; height: 42px; display: grid; place-items: center; }
 .dot-symbol { border: 1px solid #d5deca; border-radius: 12px; background: #e3e9d9; }
 .dot-symbol i { display: block; width: 15px; height: 15px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px #d5deca; }
-.writer-symbol svg { width: 42px; height: 42px; }
+.writer-symbol svg, .marlow-symbol svg { width: 42px; height: 42px; }
 .project-category { color: var(--muted); font-size: 10px; }
 .project-card h2 { margin: 9px 0 13px; font-size: 39px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.15; }
 .project-title-link { display: inline-block; min-width: 44px; min-height: 44px; max-width: 100%; overflow-wrap: anywhere; text-decoration: none; }
 .project-title-link:hover, .project-title-link:focus-visible { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
 .dot-title span { color: var(--green); }
 .project-card .writer-title { font-family: var(--serif); font-style: italic; font-weight: 400; }
+.project-card .marlow-title { font-family: var(--serif); }
 .project-description { max-width: 29ch; color: var(--muted); font-size: 14px; line-height: 1.8; }
 @media (max-width: 640px) {
   .page-shell { width: calc(100% - 40px); }
