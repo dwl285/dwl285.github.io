@@ -36,6 +36,9 @@ p { margin: 0; }
 .dot-card { background: #eff2e9; }
 .writer-card { background: #f5f0e5; border-color: #e0d7c6; }
 .marlow-card { background: #eef1eb; border-color: #d4ddd0; }
+.fretwise-card { background: #eaf0e4; border-color: #d2dcc8; }
+.fretwise-symbol svg { width: 42px; height: 42px; }
+.project-card .fretwise-title { font-family: var(--serif); }
 .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 33px; }
 .project-symbol { width: 42px; height: 42px; display: grid; place-items: center; }
 .dot-symbol { border: 1px solid #d5deca; border-radius: 12px; background: #e3e9d9; }
