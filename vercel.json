@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "redirects": [
+    { "source": "/guitar", "destination": "https://fretwise-pink.vercel.app", "permanent": false },
+    { "source": "/guitar/:path*", "destination": "https://fretwise-pink.vercel.app/:path*", "permanent": false }
+  ]
+}

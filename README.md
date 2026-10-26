@@ -1,7 +1,7 @@
 # Daniel's project homepage
 
 A static, responsive homepage for **dandotlee.com**, in the existing user-site
-repository. Links to Dot, Writer, Marlow, and Practice Card; does not change those applications.
+repository. Links to Dot, Writer, Marlow, Practice Card, and Fretwise; does not change those applications.
 
 ## Design and scope
 
@@ -41,3 +41,5 @@ There is no build step. Production hosting is Vercel, in the dedicated
 `dan-personal-homepage` project, not GitHub Pages. Publish only the three homepage
 assets; keep development checks and legacy files out of the deployment.
 See [the domain plan](docs/domain-plan.md).
+
+Fretwise is available at `https://dandotlee.com/guitar`, which redirects to its dedicated Vercel app. Its learning data stays in that app’s browser storage. The homepage remains static.
