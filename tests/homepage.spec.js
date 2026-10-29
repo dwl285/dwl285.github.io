@@ -8,7 +8,7 @@ const projects = [
   ['Marlow', 'https://agentshopper.uk'],
   ['Practice Card', 'https://practice.dandotlee.com'],
   ['Fretwise', 'https://dandotlee.com/guitar'],
-  ['Afterglow', 'https://afterglow-dwl285.fly.dev'],
+  ['Afterglow', 'https://afterglow.dandotlee.com'],
 ];
 
 test('has project content and title links to the six destinations', async ({ page }) => {
