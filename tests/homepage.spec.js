@@ -8,9 +8,10 @@ const projects = [
   ['Marlow', 'https://agentshopper.uk'],
   ['Practice Card', 'https://practice.dandotlee.com'],
   ['Fretwise', 'https://dandotlee.com/guitar'],
+  ['Afterglow', 'https://afterglow-dwl285.fly.dev'],
 ];
 
-test('has unchanged project content and title links to the five working destinations', async ({ page }) => {
+test('has project content and title links to the six destinations', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveTitle('Daniel Lee — Personal projects');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
@@ -37,12 +38,12 @@ test('has unchanged project content and title links to the five working destinat
   await expect(page.getByRole('heading', { level: 2 })).toHaveCount(projects.length);
 });
 
-test('Dot, Writer, Marlow, Practice Card and Fretwise are sibling project cards with independent links', async ({ page }) => {
+test('all projects are sibling cards with independent links', async ({ page }) => {
   await page.goto('/');
   const cards = page.locator('.project-grid > article.project-card');
   await expect(cards).toHaveCount(projects.length);
   await expect(page.locator('.project-grid article')).toHaveCount(projects.length);
-  await expect(cards.locator('h2')).toHaveText(['Dot.', 'Writer', 'Marlow', 'Practice Card', 'Fretwise']);
+  await expect(cards.locator('h2')).toHaveText(['Dot.', 'Writer', 'Marlow', 'Practice Card', 'Fretwise', 'Afterglow']);
   for (const [index, [name, href]] of projects.entries()) {
     await expect(cards.nth(index).getByRole('link')).toHaveCount(1);
     await expect(cards.nth(index).getByRole('link', { name, exact: true })).toHaveAttribute('href', href);

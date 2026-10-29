@@ -1,7 +1,7 @@
 # Daniel's project homepage
 
 A static, responsive homepage for **dandotlee.com**, in the existing user-site
-repository. Links to Dot, Writer, Marlow, Practice Card, and Fretwise; does not change those applications.
+repository. Links to Dot, Writer, Marlow, Practice Card, Fretwise, and Afterglow; does not change those applications.
 
 ## Design and scope
 
